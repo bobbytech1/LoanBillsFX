@@ -1,0 +1,41 @@
+GET http://localhost:8000
+
+### Register Route
+POST http://localhost:8000/api/user/register/
+Content-Type: application/json 
+
+{
+    "name": "John Doe",
+    "email": "male@mail.com",
+    "country": "Nigeria",
+    "password": "12345678"
+}
+
+### Login Route
+POST http://localhost:8000/api/user/login/
+Content-Type: application/json
+
+{
+    "email": "super@mail.com",
+    "password": "12345678"
+}
+
+### Admin Register Route
+POST http://localhost:8000/api/admin/register/
+Content-Type: application/json
+
+{
+    "name": "Tosin Funds",
+    "email": "tosin@mail.com",
+    "password": "12345678910"
+}
+
+
+### Admin Login Route
+POST http://localhost:8000/api/admin/login/
+
+{
+    "email": "tosin@mail.com",
+    "password": "12345678910"
+}
+
