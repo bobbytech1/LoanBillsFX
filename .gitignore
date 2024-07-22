@@ -13,7 +13,7 @@ dist-ssr
 .env
 *.local
 
-!/LoanBills_Mobile
+!C:/Users/Aiyevbekpen Dennis L/Desktop/loan-bills/LoanBills_Mobile
 
 # Editor directories and files
 .vscode/*
