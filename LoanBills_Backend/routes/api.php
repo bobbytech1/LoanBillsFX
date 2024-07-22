@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserAuthController;
+use App\Http\Controllers\Api\PasswordResetController;
 use App\Http\Controllers\Api\AdminAuthController;
 use App\Http\Controllers\OtpVerificationController;
 
@@ -23,6 +24,10 @@ Route::prefix('user')->group(function () {
     Route::post('resend-otp', [UserAuthController::class, 'resendOtp']);
     Route::post('login', [UserAuthController::class, 'login']);
 });
+
+Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail']);
+Route::post('reset-password', [PasswordResetController::class, 'reset']);
+
 
 
 Route::prefix('admin')->group(function () {

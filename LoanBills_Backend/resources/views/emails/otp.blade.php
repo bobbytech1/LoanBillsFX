@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OTP Verification</title>
+    <title>Your OTP Code</title>
 </head>
 <body>
-    <p>Your OTP for verification is: <strong>{{ $otp }}</strong></p>
+    <h1>Hello,</h1>
+    <p>Your OTP code is: <strong>{{ $otp }}</strong></p>
+    <p>This code is valid for 2 minutes.</p>
 </body>
 </html>
