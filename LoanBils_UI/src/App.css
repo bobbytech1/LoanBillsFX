@@ -1,0 +1,143 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+.dark .dark\:bg-gray-800 {
+  background-color:rgba(14, 13, 13, 0.74);
+}
+.dark .dark\:text-white {
+  color: #ffffff;
+}
+
+.dark .dark\:bg-dark-yellow {
+  background-color: #f7bb06;
+}
+
+.flag {
+  width: 20px;
+  height: 15px;
+  margin-right: 8px;
+  display: inline-block;
+  background-size: cover;
+}
+
+.custom-border-color {
+  border-color: #f7bb06;
+}
+.text-center {
+  text-align: center;
+}
+.font-bold {
+  font-weight: bold;
+}
+.text-small {
+  font-size: 10px;
+}
+
+.fit-content {
+width:fit-content
+}
+/* .pointer-cursor {
+cursor: pointer;
+} */
+
+.feather-eye {
+display: inline-block;
+}
+
+.feather-eye-off {
+display: none;
+}
+
+
+
+.password-toggle {
+position: relative;
+right: 30px;
+cursor: pointer;
+}
+
+
+/* Style for the invalid input fields */
+input:invalid {
+  border: 2px solid #ff6b6b;
+  background-color: #ffe6e6;
+}
+
+/* Style for the valid input fields */
+input:valid {
+  border: 2px solid #4caf50;
+  background-color: #e6ffe6;
+}
+
+/* Style for the input fields when focused */
+input:focus:invalid {
+  outline: none;
+  box-shadow: 0 0 10px #ff6b6b;
+}
+
+/* Style for the input fields when valid and focused */
+input:focus:valid {
+  outline: none;
+  box-shadow: 0 0 10px #4caf50;
+}
+
+/* Custom tooltip style */
+input:invalid::after {
+  content: attr(data-error);
+  position: absolute;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 3px;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  display: none;
+}
+
+input:invalid:focus::after {
+  display: block;
+}
