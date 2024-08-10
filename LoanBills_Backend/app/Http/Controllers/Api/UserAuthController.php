@@ -8,11 +8,8 @@ use App\Models\UserOtp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 use App\Services\OtpService;
 use App\Services\EmailService;
-
-
 
 class UserAuthController extends Controller
 {

@@ -11,6 +11,8 @@ const useRegister = () => {
         country: '',
     });
     const [errors, setErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
+    const [buttonText, setButtonText] = useState('Register');
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
@@ -24,6 +26,10 @@ const useRegister = () => {
             [name]: '',
         }));
     };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+      };
 
     const validateForm = () => {
         const newErrors = {};
@@ -42,6 +48,7 @@ const useRegister = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setButtonText('Submitting Details...')
         if (validateForm()) {
             try {
                 const result = await registerUser(formData);
@@ -57,6 +64,11 @@ const useRegister = () => {
                 }
             }
         }
+
+        setTimeout(() => {
+            setButtonText('Sign In');
+            // Handle login logic here
+          }, 2000);
     };
     
 
@@ -64,6 +76,10 @@ const useRegister = () => {
     return {
         formData,
         errors,
+        buttonText,
+        showPassword, 
+        setShowPassword,
+        togglePasswordVisibility,
         handleInputChange,
         handleSubmit,
     };

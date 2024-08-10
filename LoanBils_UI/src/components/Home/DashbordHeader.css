@@ -1,0 +1,37 @@
+.tab-container {
+  position: relative;
+  display: flex;
+  border-radius: 9999px; /* Large value for full rounded corners */
+  overflow: hidden;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  flex: 1; /* Ensures equal space for all tabs */
+  text-align: center; /* Centers text in the tab */
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 33.33%;
+  background-color: white;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  z-index: 0;
+  border-radius: 9999px; /* Same large value for full rounded corners */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .slider {
+    width: 33.33%; /* Adjust based on the number of tabs */
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    width: 33.33%; /* Adjust based on the number of tabs */
+  }
+}

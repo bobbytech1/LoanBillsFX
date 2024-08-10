@@ -24,6 +24,8 @@ Route::get('/test-email', function () {
     return 'Email sent successfully!';
 });
 
+Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });

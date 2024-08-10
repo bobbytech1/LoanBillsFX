@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Password Reset Successful</title>
+    <title>Password Reset Successfully</title>
 </head>
 <body>
-    <h1>Hello {{ $user->name }},</h1>
-    <p>Your password has been successfully reset. If you did not perform this action, please contact our support team immediately.</p>
+    <h1>Password Reset Successfully</h1>
+    <p>Hi,</p>
+    <p>Your password has been successfully reset for the account associated with {{ $email }}.</p>
+    <p>If you did not request this change, please contact our support team immediately.</p>
     <p>Thank you!</p>
 </body>
 </html>

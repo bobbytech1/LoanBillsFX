@@ -61,3 +61,24 @@ export const checkTokenExpiration = () => {
     window.location.href = '/login';
   }
 };
+
+export const requestPasswordReset = async (data) => {
+  try {
+    const response = await api.post('/forgot-password', data);
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : error.message;
+  }
+};
+
+
+export const resetPassword = async (data) => {
+  try {
+    const response = await api.post('/reset-password', data);
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : error.message;
+  }
+};
+
+

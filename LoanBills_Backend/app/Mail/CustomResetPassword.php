@@ -14,16 +14,31 @@ class CustomResetPassword extends Mailable
     public $token;
     public $email;
 
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
     public function __construct($token, $email)
     {
         $this->token = $token;
         $this->email = $email;
     }
 
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
-        $url = url('/reset-password?token=' . $this->token . '&email=' . urlencode($this->email));
+        $frontendUrl = config('app.frontend_url'); // Add frontend URL to config/app.php
+
+        $url = $frontendUrl . '/reset-password?token=' . $this->token . '&email=' . urlencode($this->email);
+
         return $this->view('emails.reset-password')
-                    ->with(['url' => $url]);
+                    ->with([
+                        'url' => $url,
+                    ]);
     }
 }

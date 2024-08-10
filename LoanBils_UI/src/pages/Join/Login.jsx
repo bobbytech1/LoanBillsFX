@@ -8,15 +8,13 @@ function Login() {
     email,
     password,
     showPassword,
-    emailError,
-    passwordError,
     error,
+    buttonText,
     handleEmailChange,
     handlePasswordChange,
     togglePasswordVisibility,
     handleSubmit,
   } = useLogin(); // Use the custom hook for form handling and validation
-
 
   return (
     <div className="bg-white text-black dark:bg-gray-800 dark:text-white h-screen flex items-center justify-center">
@@ -27,8 +25,7 @@ function Login() {
           </div>
         </div>
         <div className="text-center">
-        
-        <h3 id="dynamic-text" className="font-bold ">WELCOME TO LOANBILLS!</h3>
+          <h3 id="dynamic-text" className="font-bold">WELCOME TO LOANBILLS!</h3>
           <p className="text-small mb-2 text-[10px]">Login to your account</p>
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
@@ -40,7 +37,7 @@ function Login() {
             >
               Email
             </label>
-            <div className="relative bg-white dark:bg-black mb-[18px] rounded-full border-2 focus-within:border-2 focus-within:border-[#000] dark:focus-within:border-[#FFFF]  pl-4 pr-4 pt-[1px] pb-[1px] flex items-center">
+            <div className="relative bg-white dark:bg-black mb-[18px] rounded-full border-2 focus-within:border-2 focus-within:border-[#000] dark:focus-within:border-[#FFFF] pl-4 pr-4 pt-[1px] pb-[1px] flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -68,16 +65,13 @@ function Login() {
                 onChange={handleEmailChange}
               />
             </div>
-            {emailError && (
-              <div className="text-red-500 text-sm pl-[25px]">{emailError}</div>
-            )}
             <label
               htmlFor="password"
               className="pl-[25px] text-[17px] block font-medium text-gray-700 dark:text-gray-200 mb-[3px]"
             >
               Password
             </label>
-            <div className="relative bg-white dark:bg-black mb-4 rounded-full border-2 focus-within:border-2 focus-within:border-[#000] dark:focus-within:border-[#FFFF]  pl-4 pr-4 pt-[1px] pb-[1px] flex items-center">
+            <div className="relative bg-white dark:bg-black mb-4 rounded-full border-2 focus-within:border-2 focus-within:border-[#000] dark:focus-within:border-[#FFFF] pl-4 pr-4 pt-[1px] pb-[1px] flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -138,15 +132,17 @@ function Login() {
                 </svg>
               )}
             </div>
-            {passwordError && (
-              <div className="text-red-500 text-sm pl-[25px]">{passwordError}</div>
-            )}
             <button
               type="submit"
               className="w-full bg-[#000000] text-white border-[2px] py-2 rounded-full mb-4"
             >
-              Sign In
+              {buttonText}
             </button>
+            <p className='text-right text-gray-700 dark:text-gray-200'>
+              <Link to="/forgot-password" className="text-[#000000] text-[14px]">
+                Forgot Password?
+              </Link>
+            </p>
             <p className="text-center text-gray-700 dark:text-gray-200">
               Don't have an account?{' '}
               <Link to="/register" className="text-[#000000] text-[14px]">

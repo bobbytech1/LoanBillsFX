@@ -12,6 +12,7 @@ function OTP() {
     otp,
     email,
     otpError,
+    buttonText,
     countdown,
     isResendEnabled,
     handleOtpChange,
@@ -72,7 +73,7 @@ function OTP() {
             type="submit"
             className="w-full bg-[#000000] text-white border-[2px] py-2 rounded-full mb-4"
           >
-            Verify
+            {buttonText}
           </button>
           <p className="text-center text-gray-700 dark:text-gray-200">
             Didn't receive the code?{' '}

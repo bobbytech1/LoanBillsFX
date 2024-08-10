@@ -13,49 +13,46 @@ use Illuminate\Validation\ValidationException;
 
 class PasswordResetController extends Controller
 {
+   
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
-
-        $status = Password::sendResetLink($request->only('email'));
-
-        if ($status === Password::RESET_LINK_SENT) {
-            return response()->json(['message' => __($status)]);
-        }
-
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+    
+        $response = Password::sendResetLink($request->only('email'));
+    
+        return $response === Password::RESET_LINK_SENT
+                    ? response()->json(['message' => 'Reset link sent to your email.'])
+                    : response()->json(['message' => 'Failed to send reset link.'], 400);
     }
 
-    public function reset(Request $request)
+    public function showResetForm(Request $request, $token = null)
+{
+    return view('auth.passwords.reset')->with(
+        ['token' => $token, 'email' => $request->email]
+    );
+}
+
+public function reset(Request $request)
     {
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|confirmed|min:8',
         ]);
 
-        $status = Password::reset(
+        $response = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                ])->save();
+                $user->password = Hash::make($password);
+                $user->save();
 
-                $user->tokens()->delete(); // Invalidate all existing tokens
-
-                // Send password reset success email
-                Mail::to($user->email)->send(new PasswordResetSuccess($user));
+                // Send the password reset success email
+                Mail::to($user->email)->send(new PasswordResetSuccess($user->email));
             }
         );
 
-        if ($status === Password::PASSWORD_RESET) {
-            return response()->json(['message' => __($status)]);
-        }
-
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+        return $response === Password::PASSWORD_RESET
+                    ? response()->json(['message' => 'Password has been reset.'])
+                    : response()->json(['message' => 'Failed to reset password.'], 400);
     }
 }

@@ -7,6 +7,7 @@ const useOtp = (initialEmail) => {
     const [otp, setOtp] = useState('');
   const [email, setEmail] = useState(initialEmail);
   const [otpError, setOtpError] = useState('');
+  const [buttonText, setButtonText] = useState('Verify');
   const [countdown, setCountdown] = useState(120); // 2 minutes countdown
   const [isResendEnabled, setIsResendEnabled] = useState(false);
 
@@ -35,6 +36,7 @@ const useOtp = (initialEmail) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setButtonText('Verifying....')
     let valid = true;
 
     if (!otp) {
@@ -73,6 +75,7 @@ const useOtp = (initialEmail) => {
     email,
     otpError,
     countdown,
+    buttonText,
     isResendEnabled,
     handleOtpChange,
     handleSubmit,

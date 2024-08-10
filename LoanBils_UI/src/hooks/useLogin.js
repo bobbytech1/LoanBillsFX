@@ -10,6 +10,7 @@ const useLogin = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
+  const [buttonText, setButtonText] = useState('Sign In');
 
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const useLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setButtonText('Signing In...')
 
     let valid = true;
 
@@ -51,13 +53,22 @@ const useLogin = () => {
       try {
         const userData = { email, password };
         const data = await loginUser(userData);
-        toast.success('Login successful redirecting....',);
-        navigate('/dashboard'); // Redirect on successful login
+        toast.success('Login successful redirecting....',{
+          className: 'custom-toast custom-toast-success',
+        });
+        setTimeout(() => navigate('/dashboard'), 3000);// Redirect on successful login
       } catch (error) {
-        toast.error('Login error:', error);
+        toast.error('Login error:', error, {
+          className: 'custom-toast custom-toast-error',
+        });
         setError(error.message || 'Failed to login. Please try again.'); // Set error state for display
       }
     }
+
+    setTimeout(() => {
+      setButtonText('Sign In');
+      // Handle login logic here
+    }, 2000);
   };
 
   return {
@@ -67,6 +78,7 @@ const useLogin = () => {
     emailError,
     passwordError,
     error,
+    buttonText,
     handleEmailChange,
     handlePasswordChange,
     togglePasswordVisibility,
