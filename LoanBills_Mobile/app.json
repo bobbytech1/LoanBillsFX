@@ -33,8 +33,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "c798c7b3-ffe1-472d-b7f1-ab7dd342f69a",
-        "owner": "bdev2468"
+        "projectId": "c798c7b3-ffe1-472d-b7f1-ab7dd342f69a"
       }
     },
     "runtimeVersion": {
@@ -42,6 +41,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/c798c7b3-ffe1-472d-b7f1-ab7dd342f69a"
-    }
+    },
+    "owner": "bdev2468"
   }
 }
