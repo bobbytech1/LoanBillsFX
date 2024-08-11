@@ -13,7 +13,7 @@ export default function App() {
           <Image source={images.Logo} resizeMode='contain' className="h-[30%]"/>
           <View className="relative mt-5">
              <Text className="text-customwhite text-3xl font-pbold text-center">Welcome</Text>
-             <Text className="text-customwhite text-xl capitalize text-center font-pmedium">we are glad that you are here thank you</Text>
+             <Text className="text-customwhite text-xl capitalize text-center font-pmedium">we are glad that you are here </Text>
              <CustomButton
               title="Get Started"
               handlePress={() => router.push('/Onboarding')}
