@@ -9,9 +9,9 @@ const Onboarding = () => {
   return (
     <SafeAreaView className="bg-customblack h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}>
-        <View className="w-full justify-center items-center" style={[ { height: hp('100%') },]}>
-          <Image source={images.LogoSide} resizeMode='contain' style={[ { height: hp('10%') },]}/>
-          <Image source={images.Download} resizeMode='contain' style={[ { height: hp('35%') },]}/>
+        <View className="w-full justify-center items-center" style={[ { height: hp(100) },]}>
+          <Image source={images.LogoSide} resizeMode='contain' style={[ { height: hp(12) },]}/>
+          <Image source={images.Download} resizeMode='contain' style={[ { height: hp(32) },]}/>
           <View className="relative mt-5">
              <Text className="text-customwhite text-3xl font-pbold text-center">Streamline Your Finances</Text>
              <Text className="text-customwhite text-xl capitalize text-center font-pmedium">Hassle-Free Currency Exchange, Flight Booking, and Bill Payments</Text>
