@@ -7,7 +7,7 @@ import CustomButton from '../components/Button/CustomButton';
 
 const Onboarding = () => {
   return (
-    <SafeAreaView className="bg-customblack h-full">
+    <SafeAreaView className="bg-customblack">
       <ScrollView contentContainerStyle={{height: '100%'}}>
         <View className="w-full justify-center items-center" style={[ { height: hp(100) },]}>
           <Image source={images.LogoSide} resizeMode='contain' style={[ { height: hp(12) },]}/>
