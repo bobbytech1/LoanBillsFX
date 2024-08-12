@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Platform, StyleSheet, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Link } from 'expo-router';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
@@ -22,7 +22,7 @@ const SignUp = () => {
   return (
       <SafeAreaView className="bg-customblack h-full">
         <ScrollView>
-         <View className="w-full flex-1 px-4 my-[2px]">
+         <View className="w-full flex-1 px-4 my-[2px]" style={styles.container}>
             <Image source={images.LogoSide} className="w-[150px] h-[80px]"/>
             <Text className="text-customwhite font-psemibold font-semibold text-2xl mt-2">Sign up to Loanbills</Text>
             <FormField 
@@ -66,5 +66,10 @@ const SignUp = () => {
       </SafeAreaView>
   )
 }
-
+const styles = StyleSheet.create({
+  container:{
+    height: Platform.OS === 'ios' ? 650 : 700,
+  }
+  
+});
 export default SignUp

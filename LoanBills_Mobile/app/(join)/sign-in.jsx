@@ -10,7 +10,6 @@ import CustomButton from '../../components/Button/CustomButton'
 import { useState } from 'react';
 
 const SignIn = () => {
-  const { height } = Dimensions.get('window');
 
   const [form, setForm] = useState({
     email: '',
