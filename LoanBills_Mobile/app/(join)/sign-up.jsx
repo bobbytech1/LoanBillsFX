@@ -22,7 +22,7 @@ const SignUp = () => {
   return (
       <SafeAreaView className="bg-customblack h-full">
         <ScrollView>
-         <View className="w-full h-full px-4 my-[2px]">
+         <View className="w-full flex-1 px-4 my-[2px]">
             <Image source={images.LogoSide} className="w-[150px] h-[80px]"/>
             <Text className="text-customwhite font-psemibold font-semibold text-2xl mt-2">Sign up to Loanbills</Text>
             <FormField 
