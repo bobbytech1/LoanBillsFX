@@ -7,7 +7,7 @@ import CustomButton from '../components/Button/CustomButton';
 
 const Onboarding2 = () => {
   return (
-    <SafeAreaView className="bg-customblack">
+    <SafeAreaView className="bg-customblack h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}>
             <View className="w-full justify-center items-center" style={{height: verticalScale(650)}}>
                 <Image source={images.LogoSide} resizeMode='contain' style={{height: verticalScale(80)}} />
@@ -17,7 +17,7 @@ const Onboarding2 = () => {
              <Text className="text-customwhite text-[15px] capitalize text-center font-pmedium">Simplify Finances: Easy Exchange, Seamless Booking, Quick Payments</Text>
              <CustomButton
               title="Create Account"
-              handlePress={() => router.push('/sign-u')}
+              handlePress={() => router.push('/sign-up')}
               containerStyles="mt-7"
              />
           </View>

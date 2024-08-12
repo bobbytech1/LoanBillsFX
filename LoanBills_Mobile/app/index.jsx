@@ -8,7 +8,7 @@ import CustomButton from '../components/Button/CustomButton';
 
 export default function App() {
   return (
-    <SafeAreaView className="bg-customblack" >
+    <SafeAreaView className="bg-customblack h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}>
         <View className="w-full justify-center items-center" style={{height: verticalScale(650)}}>
           <Image source={images.Logo} resizeMode='contain' style={{height: verticalScale(200)}}/>
