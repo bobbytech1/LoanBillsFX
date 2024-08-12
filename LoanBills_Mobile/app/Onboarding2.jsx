@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Platform, StyleSheet, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import { Redirect, router } from 'expo-router';
@@ -9,7 +9,7 @@ const Onboarding2 = () => {
   return (
     <SafeAreaView className="bg-customblack h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}>
-            <View className="w-full justify-center items-center" style={{height: verticalScale(650)}}>
+            <View className="w-full justify-center items-center" style={styles.container}>
                 <Image source={images.LogoSide} resizeMode='contain' style={{height: verticalScale(80)}} />
                 <Image source={images.SlideOn}  resizeMode='contain' style={{height: verticalScale(300)}}  />
                 <View className="relative mt-5">
@@ -26,5 +26,12 @@ const Onboarding2 = () => {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container:{
+    height: Platform.OS === 'ios' ? 650 : 700,
+  }
+  
+});
 
 export default Onboarding2
