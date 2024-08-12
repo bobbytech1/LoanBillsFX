@@ -24,7 +24,7 @@ const SignUp = () => {
         <ScrollView>
          <View className="w-full h-full px-4 my-[2px]">
             <Image source={images.LogoSide} className="w-[150px] h-[80px]"/>
-            <Text className="text-customwhite capitalize font-psemibold font-semibold text-2xl mt-2">sign up to loanbills</Text>
+            <Text className="text-customwhite font-psemibold font-semibold text-2xl mt-2">Sign up to Loanbills</Text>
             <FormField 
               title="Name"
               value={form.name}

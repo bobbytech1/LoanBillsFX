@@ -22,7 +22,7 @@ const SignIn = () => {
         <ScrollView>
          <View className="w-full min-h-[100vh] justify-center px-4 my-[2px]">
             <Image source={images.LogoSide} className="w-[150px] h-[80px]"/>
-            <Text className="text-customwhite capitalize font-psemibold font-semibold text-2xl mt-2">Login to loanbills</Text>
+            <Text className="text-customwhite font-psemibold font-semibold text-2xl mt-2">Login to Loanbills</Text>
             <FormField 
               title="Email"
               value={form.email}
