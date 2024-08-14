@@ -1,6 +1,7 @@
 import {Stack} from "expo-router"
 import { StatusBar } from 'expo-status-bar'
 
+
 const JoinLayout = () => {
   return (
     <>
@@ -13,6 +14,18 @@ const JoinLayout = () => {
         />
         <Stack.Screen 
           name='sign-in'
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen 
+          name='otp'
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen 
+          name='forgot-password'
           options={{
             headerShown: false
           }}

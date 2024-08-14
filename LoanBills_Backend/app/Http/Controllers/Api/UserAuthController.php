@@ -30,7 +30,14 @@ class UserAuthController extends Controller
             'country' => 'required|string|max:50',
             'password' => 'required|string|min:8',
         ]);
+        
+        $existingUser = User::where('email', $request->email)->first();
 
+        if ($existingUser) {
+            // Resend OTP to existing user
+            $this->otpService->generateOtp($existingUser);
+            return response()->json(['message' => 'This email is already registered. A new OTP has been sent.'], 200);
+        }
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -41,7 +48,7 @@ class UserAuthController extends Controller
             'country' => $request->country,
             'password' => Hash::make($request->password),
         ]);
-
+        
         // Generate OTP and send email
         $this->otpService->generateOtp($user);
 
@@ -98,16 +105,41 @@ class UserAuthController extends Controller
 
     public function login(Request $request)
     {
+        // Validate incoming request
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+    
+        // Attempt to authenticate the user
         if (!auth()->attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Invalid login details'], 401);
         }
-
-        $user = User::where('email', $request->email)->firstOrFail();
-
-        if (!$user->verified) {
-            return response()->json(['message' => 'Email not verified'], 403);
+    
+        try {
+            // Fetch the user
+            $user = User::where('email', $request->email)->firstOrFail();
+    
+            // Check if the user is verified
+            if (!$user->verified) {
+                return response()->json(['message' => 'Email not verified'], 403);
+            }
+    
+            // Create and return the token
+            $token = $user->createToken('auth_token')->plainTextToken;
+            return response()->json(['token' => $token]);
+    
+        } catch (\Exception $e) {
+            // Log the exception for debugging
+            \Log::error('Login error: ' . $e->getMessage());
+    
+            // Return a generic error message
+            return response()->json(['message' => 'Internal Server Error'], 500);
         }
-
-        return response()->json(['token' => $user->createToken('auth_token')->plainTextToken]);
     }
+    
 }

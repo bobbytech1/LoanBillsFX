@@ -44,6 +44,8 @@ const useResetPassword = () => {
     } catch (error) {
       setError('Failed to reset password');
       toast.error('Failed to reset password');
+    } finally {
+      setButtonText('Reset Password')
     }
   };
 

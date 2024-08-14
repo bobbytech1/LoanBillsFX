@@ -6,6 +6,6 @@
 <body>
     <h1>Hello,</h1>
     <p>Your OTP code is: <strong>{{ $otp }}</strong></p>
-    <p>This code is valid for 2 minutes.</p>
+    <p>This code is valid for 59 seconds.</p>
 </body>
 </html>

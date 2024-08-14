@@ -1,12 +1,13 @@
-import { View, Text, Platform, StyleSheet, Image } from 'react-native'
+import { View, Text, Platform, StyleSheet, Image, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import { ScrollView } from 'react-native'
 import {images} from '../../constants';
 import FormField from '../../components/Form/FormField';
 import CustomButton from '../../components/Button/CustomButton'
 import { useState } from 'react';
+import { registerUser } from '../../services/api';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -16,14 +17,38 @@ const SignUp = () => {
     country: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const handleSubmit = () => {
+  const [buttonText, setButtonText] = useState('Sign Up')
+  const validateForm = () => {
+    if (!form.name || !form.email || !form.password || !form.country) {
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
+    return true;
+  }
+  const handleSubmit = async (e) => {
+    setButtonText('Submitting...')
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        const result = await registerUser(form)
+        router.replace(`/otp?email=${encodeURIComponent(form.email)}`)
+      } catch (error) {
+        Alert.alert('Error', error.messge)
+      } finally {
+        setButtonText('Sign Up')
+      }
+    }
+
+    if (form.email === form.email){
+      router.replace(`/otp?email=${encodeURIComponent(form.email)}`)
+    }
 
   }
   return (
       <SafeAreaView className="bg-customblack h-full">
         <ScrollView>
          <View className="w-full flex-1 px-4 my-[2px]" style={styles.container}>
-            <Image source={images.LogoSide} className="w-[150px] h-[80px]"/>
+            <Image source={images.LogoSide} className="w-[160px] h-[80px]"/>
             <Text className="text-customwhite font-psemibold font-semibold text-2xl mt-2">Sign up to Loanbills</Text>
             <FormField 
               title="Name"
@@ -52,7 +77,7 @@ const SignUp = () => {
               otherStyles="mt-4"
             />
             <CustomButton 
-              title="Sign Up"
+              title={buttonText}
               handlePress={handleSubmit}
               containerStyles="mt-7"
               isLoading={isSubmitting}

@@ -19,7 +19,7 @@ class OtpService
         UserOtp::create([
             'user_id' => $user->id,
             'otp' => $otp,
-            'expires_at' => now()->addMinutes(2),
+            'expires_at' => now()->addMinutes(1),
         ]);
 
         // Send OTP email
