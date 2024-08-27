@@ -17,7 +17,7 @@ const Onboarding = () => {
              <Text className="text-customwhite text-[16px] capitalize text-center font-pmedium">Hassle-Free Currency Exchange, Flight Booking, and Bill Payments</Text>
              <CustomButton
               title="Continue"
-              handlePress={() => router.push('/Onboarding2')}
+              handlePress={() => router.replace('/Onboarding2')}
               containerStyles="mt-7"
              />
           </View>

@@ -32,7 +32,7 @@ const SignIn = () => {
       const data = await loginUser(form.email, form.password, handleLogout);
       setAuthToken(data.token); // Set the token in context
       Alert.alert('Login successful!');
-      router.replace('/wallet')
+      router.replace('/(tabs)/wallet')
       // Navigate to the next screen or handle successful login here
     } catch (error) {
       setEmailError('Invalid Credentials')

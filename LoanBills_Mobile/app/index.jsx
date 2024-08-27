@@ -17,7 +17,7 @@ export default function App() {
              <Text className="text-customwhite text-xl capitalize text-center font-pmedium">we are glad that you are here </Text>
              <CustomButton
               title="Get Started"
-              handlePress={() => router.push('/Onboarding')}
+              handlePress={() => router.replace('/Onboarding')}
               containerStyles="mt-7"
              />
           </View>

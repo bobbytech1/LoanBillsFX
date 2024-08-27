@@ -10,6 +10,8 @@ import upload from "../assets/icons/upload.png";
 import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
+import notification from "../assets/icons/mdi--bell.png";
+import settings from "../assets/icons/mdi--gear.png"
 
 export default {
   wallet,
@@ -24,4 +26,6 @@ export default {
   logout,
   eyeHide,
   eye,
+  notification,
+  settings,
 };
